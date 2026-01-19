@@ -1,109 +1,97 @@
-*This project has been created as part of the 42 curriculum by mariaalm.*
+<div align="center">
+  <a href="https://github.com/marialmeidafr/Push_swap" target="_blank">
+    <img src="https://raw.githubusercontent.com/danielleseragioli/42_duck_badges/main/badges/push_swap_pin.png" width="150" height="150" alt="push swap duck badge" />
+  </a>
+  <h1 align="center">Push_swap</h1>
+</div>
 
-# push_swap
+<p align="center">
+  <img src="https://img.shields.io/badge/language-C-blue" />
+  <img src="https://img.shields.io/badge/algorithm-sorting-brightgreen" />
+  <img src="https://img.shields.io/badge/data%20structures-stacks-orange" />
+</p>
 
-## Description
+<p align="center">
+  <strong>⚡ Efficient integer sorting with limited stack operations in C ⚡</strong>
+</p>
 
-The **push_swap** project is an algorithmic challenge from the 42 curriculum.  
-Its objective is to sort a list of integers using two stacks (**stack A** and **stack B**) and a restricted set of allowed operations.
+<p align="center">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb24xNDQ2ZnBraDd4cWthaDBuNzRqeWhxZGV4NTNmcHc2dWIyZ3FvcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3hLW6IdSX4CMW8RrBn/giphy.gif" width="300" alt="fun gif"/>
+</p>
+---
 
-The difficulty of the project lies in sorting the numbers using the **fewest possible operations**, which requires an efficient algorithmic approach rather than brute force.
+<h2 align="center">✨ Overview</h2>
 
-This implementation uses **Radix Sort**, adapted to work with stacks and the allowed push_swap operations.
+**push_swap** is a C program that sorts a sequence of integers using two stacks (`a` and `b`) and a limited set of operations. The challenge is not just sorting, but doing it using the **fewest possible moves**.
 
-## Instructions
+This project showcases skills in **algorithm design**, **data structures**, **performance optimization**, and **memory-safe C programming**.
 
-### Compilation
+---
 
-Compile the program using:
+<h3 align="center">🧩 Problem Summary</h3>
+
+* **Input:** integers passed as command-line arguments 🔢
+* **Data structures:** two stacks implemented as linked lists 📚
+* **Constraints:** only predefined stack operations are allowed 🚫
+* **Goal:** sort stack `a` in ascending order with minimal operations 🎯
+
+---
+
+<h3 align="center">🔁 Allowed Operations</h3>
+
+| Operation | Description                                     |
+| --------- | ----------------------------------------------- |
+| `sa`      | Swap the first two elements of stack a 🔄       |
+| `sb`      | Swap the first two elements of stack b 🔄       |
+| `ss`      | Perform `sa` and `sb` simultaneously ⚡          |
+| `pa`      | Push the top element of stack b onto stack a ⬆️ |
+| `pb`      | Push the top element of stack a onto stack b ⬇️ |
+| `ra`      | Rotate stack a upward 🔁                        |
+| `rb`      | Rotate stack b upward 🔁                        |
+| `rr`      | Perform `ra` and `rb` simultaneously ⚡          |
+| `rra`     | Reverse rotate stack a 🔃                       |
+| `rrb`     | Reverse rotate stack b 🔃                       |
+| `rrr`     | Perform `rra` and `rrb` simultaneously ⚡        |
+
+---
+
+<h3 align="center">🧠 Algorithm Strategy</h3>
+
+The solution combines several optimization techniques:
+
+* **Indexing values** to simplify comparisons 🔢
+* **Cost evaluation** to select the most efficient moves 💰
+* **Chunk-based sorting** for large inputs 📦
+* Optimized logic for **small datasets** ✨
+
+Each operation is chosen to balance **performance** and **code readability**.
+
+---
+
+<h3 align="center">▶️ Usage</h3>
 
 ```bash
-make
-This will generate the executable push_swap.
-
-Other available rules:
-
-make clean
-make fclean
-make re
-
-Execution
-
-Run the program by passing integers as arguments:
-
 ./push_swap 4 67 3 87 23
+```
 
+The program outputs a sequence of operations that will sort the stack ✅
 
-The output will be a list of instructions (one per line) that, when executed, will sort the stack.
+---
 
-Allowed Operations
+<h3 align="center">❌ Error Handling</h3>
 
-sa / sb / ss – swap the first two elements of stack A and/or B
+The program safely exits with `Error` when encountering:
 
-pa / pb – push the top element from one stack to the other
+* Non-numeric or invalid input 🚫
+* Duplicate values ❌
+* Integer overflow or underflow ⚠️
+* Incorrect argument formatting 📝
 
-ra / rb / rr – rotate the stack (first element becomes last)
+---
 
-rra / rrb / rrr – reverse rotate the stack (last element becomes first)
+<h3 align="center">🌟 Project Highlights</h3>
 
-Algorithm Overview
-Input Validation
-
-Checks for non-numeric arguments
-
-Checks for duplicate values
-
-Handles integer overflow
-
-Displays Error followed by a newline if input is invalid
-
-Indexing
-
-Before sorting, all numbers are indexed based on their relative order.
-This transforms the input into a range from 0 to n - 1, which simplifies comparisons and allows Radix Sort to work correctly with negative numbers.
-
-Radix Sort Strategy
-
-The algorithm processes numbers bit by bit, starting from the least significant bit.
-
-For each bit position:
-
-Numbers with the current bit set to 0 are pushed to stack B.
-
-Numbers with the bit set to 1 are rotated within stack A.
-
-After processing all elements for a given bit, all elements from stack B are pushed back to stack A.
-
-This process is repeated for each bit required to represent the largest index.
-
-Radix Sort guarantees an efficient number of operations and scales well for large inputs (e.g. 100 or 500 numbers).
-
-Resources
-References
-
-push_swap visualizer:
-
-https://github.com/o-reo/push_swap_visualizer
-
-Use of AI
-
-AI tools were used strictly as learning and assistance tools, not for direct code generation.
-They were used for:
-
-Understanding the Radix Sort algorithm and how to adapt it to stacks
-
-Clarifying bitwise operations and edge cases
-
-Reviewing logic and improving code structure
-
-Assisting with documentation (README)
-
-All implementation decisions and code were written and validated by the student.
-
-Notes
-
-The program outputs only valid push_swap instructions
-
-Memory is properly managed to avoid leaks
-
-The project follows the Norm and subject requirements
+* Optimized operation count ⚡
+* Modular and readable C code 📚
+* Efficient memory management 💾
+* Clear separation of responsibilities 🛠️
