@@ -6,7 +6,7 @@
 #    By: mariaalm <mariaalm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/23 15:11:22 by mariaalm          #+#    #+#              #
-#    Updated: 2026/01/15 17:04:30 by mariaalm         ###   ########.fr        #
+#    Updated: 2026/01/19 12:09:16 by mariaalm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 RM = rm -rf
 
-SRC_PATH		= .
+SRC_PATH		= src
 BUILD_PATH		= .build
 LIBFT_PATH = libft/Libft
 INC_PATH		= includes
@@ -64,6 +64,10 @@ $(BUILD_PATH)/%.o: $(SRC_PATH)/%.c
 
 $(LIBFT_ARC):
 	make -C $(LIBFT_PATH)
+
+tester:		## Run the tester script
+	@echo "   $(B)$(CYA)Running Push Swap Tester$(D)"
+	@curl https://raw.githubusercontent.com/hu8813/tester_push_swap/main/pstester.py | python3 -
 
 val: re
 	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) $(ARGS)
